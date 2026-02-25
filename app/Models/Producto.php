@@ -18,4 +18,10 @@ class Producto extends Model
     {
         return $this->hasMany(Movimiento::class);
     }
+
+    protected function mutateFormDataBeforeCreate(array $data): array
+    {
+        $data['cantidad'] = 0; // Establece la cantidad inicial en 0 al crear un nuevo producto
+        return $data;
+    }
 }

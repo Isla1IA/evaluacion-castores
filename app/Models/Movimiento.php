@@ -8,7 +8,7 @@ class Movimiento extends Model
 {
     protected $table = 'movimientos';
 
-    protected $fillable = ['user_id', 'producto_id', 'cantidad', 'tipo_movimiento'];
+    protected $fillable = ['user_id', 'producto_id', 'cantidad', 'tipo'];
 
     public function user()
     {

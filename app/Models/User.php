@@ -55,12 +55,12 @@ class User extends Authenticatable
 
     public function isAdmin()
     {
-        return $this->role && $this->role->nombre === 'administrador';
+        return $this->role?->nombre === 'administrador';
     }
 
     public function isAlmacenista()
     {
-        return $this->role && $this->role->nombre === 'almacenista';
+        return $this->role?->nombre === 'almacenista';
     }
 
     public function canAccessAdminPanel(Panel $panel)
