@@ -2,12 +2,12 @@
 
 >Evaluación Técnica de Programación.
 
-##IDE 
+## IDE 
 * **Visual Studio Code**
 
-##Framework de PHP
+## Framework de PHP
 * **Laravel Version:** 11.48.0
 * **Filament Version:** 5.2
 
-##DBMS
+## DBMS
 * **MySQL Version:** 8.4.3
