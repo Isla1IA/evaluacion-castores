@@ -29,12 +29,16 @@ use Filament\Actions\CreateAction;
 use Filament\Forms\Components\TextInput;
 
 use Filament\Notifications\Notification;
+use GuzzleHttp\Promise\Create;
 
 class ProductoResource extends Resource
 {
     protected static ?string $model = Producto::class;
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static ?string $navigationLabel = 'Productos';
+    protected static ?string $modelLabel = 'Producto';
+    protected static ?string $pluralModelLabel = 'Productos';
 
     //Formulario para crear y editar productos
     public static function form(Schema $schema): Schema
@@ -76,6 +80,8 @@ class ProductoResource extends Resource
                     ->falseLabel('Inactivos'),
             ])
             ->headerActions([
+                CreateAction::make()
+                    ->label('Nuevo Producto'),
                 //EditAction::make(),
                 Action::make('entrada')
                     ->label('Agregar Existencias')
