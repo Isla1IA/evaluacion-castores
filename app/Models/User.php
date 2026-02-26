@@ -23,6 +23,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role_id',
+        'estatus',
     ];
 
     /**
@@ -53,6 +55,7 @@ class User extends Authenticatable
         return $this->belongsTo(Role::class);
     }
 
+    // Métodos para verificar el rol del usuario
     public function isAdmin()
     {
         return $this->role?->nombre === 'administrador';
@@ -65,6 +68,6 @@ class User extends Authenticatable
 
     public function canAccessAdminPanel(Panel $panel)
     {
-        return $this->estatus == 1;
+        return (int) $this->estatus == 1; //Aseguramos que el usuario este activo, y que sea entero para evitar problemas de comparación con booleanos en la base de datos
     }
 }

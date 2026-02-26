@@ -30,6 +30,7 @@ use Filament\Forms\Components\TextInput;
 
 use Filament\Notifications\Notification;
 use GuzzleHttp\Promise\Create;
+use Illuminate\Database\Eloquent\Model;
 
 class ProductoResource extends Resource
 {
@@ -81,10 +82,13 @@ class ProductoResource extends Resource
             ])
             ->headerActions([
                 CreateAction::make()
-                    ->label('Nuevo Producto'),
+                    ->label('Nuevo Producto')
+                    ->visible(fn() => auth()->user()?->isAdmin() ?? false),
+
                 //EditAction::make(),
                 Action::make('entrada')
                     ->label('Agregar Existencias')
+                    ->visible(fn() => auth()->user()?->isAdmin() ?? false)
                     ->form([
                         Select::make('producto_id')
                             ->label('Producto')
@@ -143,8 +147,42 @@ class ProductoResource extends Resource
         ];
     }
 
+    //Metodo para ver si el usuario tiene acceso a este recurso, solo los administradores y almacenistas pueden acceder
     public static function canAccess(): bool
     {
+        return auth()->user()?->isAdmin() || auth()->user()?->isAlmacenista();
+    }
+
+    //Metodo para ver si el usuario puede crear un nuevo producto, solo los administradores pueden hacerlo
+    public static function canCreate(): bool
+    {
         return auth()->user()?->isAdmin() ?? false;
+    }
+
+    //Metodo para ver si el usuario puede editar un producto, solo los administradores pueden hacerlo
+    public static function canEdit($record): bool
+    {
+        return auth()->user()?->isAdmin() ?? false;
+    }
+
+    //Metodos para ver si el usuario puede eliminar un producto, Nadie puede eliminar productos, ni siquiera los administradores, para evitar problemas de integridad referencial con los movimientos
+    public static function canDelete($record): bool
+    {
+        return false;
+    }
+
+    public static function canDeleteAny(): bool
+    {
+        return false;
+    }
+
+    public static function canForceDelete($record): bool
+    {
+        return false;
+    }
+
+    public static function canForceDeleteAny(): bool
+    {
+        return false;
     }
 }
