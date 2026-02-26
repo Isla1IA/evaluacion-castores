@@ -100,4 +100,11 @@ Ejemplo:
 * Las salidas utilizan transacciones para garantizar la integridad de los datos
 * Se empleó bloque de fila (**lockForUpdate**) para evitar escenarios concurrentes/inconsistencias de los datos
 
+## Ejercicio Práctico de Base de Datos
+
+Dentro de la carpeta scripts que se encuentra en la raíz, se incluye:
+- **01_diagrama_relacional.png**
+  Diagrama relacional de la base de datos
+- **02_creacion_tablas.sql**
+  Script para crear las tablas necesarias en MySQL 8 (usuario, producto, movimientos)
 
