@@ -2,7 +2,7 @@
 
 Evaluación Técnica de Programación.
 
-## **¿Qué use? 🤔**
+## **¿Qué se utilizó?**
 ### IDE Usado 
 * **Visual Studio Code**
 ### Framework de PHP usado: 
@@ -45,7 +45,7 @@ Antes de Iniciar, asegúrese de tener instalado lo Siguiente:
       * **DB_USERNAME=root**
       * **DB_PASSWORD=tu_password**
 
-**🔎 Asegúrese de haber creado previamente la Base de Datos en MySQL**
+**Asegúrese de haber creado previamente la Base de Datos en MySQL**
 * **5. Generar clave de aplicación**
   ```
   php artisan key:generate
@@ -64,7 +64,7 @@ Antes de Iniciar, asegúrese de tener instalado lo Siguiente:
     ```
     http://127.0.0.1:8000/admin/login
     ```
-## 👥 Usuarios de Pruebas
+##  Usuarios de Pruebas
 Ejemplo:
 * Admin
   * email:
@@ -85,7 +85,7 @@ Ejemplo:
     password
     ```
 
-## 🚧 Arquitectura del Proyecto
+## Arquitectura del Proyecto
 * Laravel 11
 * Filament 5
 * MySQL 8
@@ -93,11 +93,11 @@ Ejemplo:
 * Control de Acceso por Roles (Admin/Almacenista)
 * Movimientos Bloqueados para Evitar Manipulación Manual
 
-## 🧐 Consideraciones Técnicas
+## Consideraciones Técnicas
 * El Inventario no se puede modificar manualmente, solo a través de movimientos de entrada y salida
 * Los movimientos funcionan como historial inmutable y no puede editarse ni eliminarse
 * Se implementó control de acceso por roles (Administrador y Almacenista)
 * Las salidas utilizan transacciones para garantizar la integridad de los datos
-* Se empleó bloque de fila (**lockForUpdate**) para evitar inconsistencias de los datos
+* Se empleó bloque de fila (**lockForUpdate**) para evitar escenarios concurrentes/inconsistencias de los datos
 
 
